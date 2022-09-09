@@ -1,0 +1,51 @@
+{
+  "name": "demo-nodejs-api",
+  "version": "0.0.1",
+  "description": "Node.js demo project",
+  "main": "app.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm run build:ts && tsc -p test/tsconfig.json && tap --ts \"test/**/*.test.ts\"",
+    "start": "npm run build:ts && fastify start -l info dist/app.js",
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
+    "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
+    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/autoload": "^5.0.0",
+    "@fastify/cors": "^8.1.0",
+    "@fastify/jwt": "^6.3.2",
+    "@fastify/passport": "^2.2.0",
+    "@fastify/secure-session": "^5.2.0",
+    "@fastify/sensible": "^5.0.0",
+    "@fastify/swagger": "^7.5.0",
+    "@prisma/client": "^4.3.1",
+    "@sinclair/typebox": "^0.24.34",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.2",
+    "fastify": "^4.0.0",
+    "fastify-cli": "^5.3.0",
+    "fastify-plugin": "^4.0.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^18.0.0",
+    "@types/passport-jwt": "^3.0.6",
+    "@types/passport-local": "^1.0.34",
+    "@types/tap": "^15.0.5",
+    "concurrently": "^7.0.0",
+    "fastify-tsconfig": "^1.0.1",
+    "prisma": "^4.3.1",
+    "tap": "^16.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
