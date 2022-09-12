@@ -128,6 +128,7 @@ export const updateUserEmail = async (id: string, email: string) => {
       firstName: true,
       lastName: true,
       email: true,
+      createdAt: true,
       updatedAt: true,
     },
   })
